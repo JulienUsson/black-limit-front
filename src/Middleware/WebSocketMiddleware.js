@@ -1,6 +1,8 @@
 import openSocket from 'socket.io-client';
 
-const socket = openSocket('http://localhost:9000');
+import config from '../config';
+
+const socket = openSocket(config.socket);
 
 const WebSocketMiddleware = () => (next) => {
   socket.on('dispatch', action => next(action));
