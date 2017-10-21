@@ -22,7 +22,7 @@ class Table extends Component {
   render() {
     return (
       <div className="table">
-        {this.props.players.map(p => <span>{p.username}</span>)}
+        {this.props.players.map(p => <span>{p.username} {!p.ready && 'not'} ready</span>)}
       </div>
     );
   }

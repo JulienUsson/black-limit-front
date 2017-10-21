@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import reducers from './Reducers';
@@ -13,7 +14,7 @@ import './index.css';
 
 const store = createStore(
   reducers,
-  applyMiddleware(webSocketMiddleware),
+  composeWithDevTools(applyMiddleware(webSocketMiddleware)),
 );
 
 ReactDOM.render(
