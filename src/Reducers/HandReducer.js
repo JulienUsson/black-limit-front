@@ -2,11 +2,13 @@ export const HAND_STARTUP = 'HAND_STARTUP';
 export const HAND_SET_UUID = 'HAND_SET_UUID';
 export const HAND_SET_USERNAME = 'HAND_SET_USERNAME';
 export const HAND_SET_READY = 'HAND_SET_READY';
+export const HAND_SET_HAND = 'HAND_SET_HAND';
 
 const INITIAL_STATE = {
   uuid: null,
   username: '',
   ready: false,
+  hand: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -17,6 +19,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, username: action.username };
     case HAND_SET_READY:
       return { ...state, ready: action.ready };
+    case HAND_SET_HAND:
+      return { ...state, hand: action.hand };
     default:
       return state;
   }
