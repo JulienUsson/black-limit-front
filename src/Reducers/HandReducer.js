@@ -1,8 +1,9 @@
-export const HAND_STARTUP = 'HAND_STARTUP';
-export const HAND_SET_UUID = 'HAND_SET_UUID';
-export const HAND_SET_USERNAME = 'HAND_SET_USERNAME';
-export const HAND_SET_READY = 'HAND_SET_READY';
-export const HAND_SET_HAND = 'HAND_SET_HAND';
+import {
+  HAND_SET_USERNAME,
+  HAND_SET_UUID,
+  HAND_SET_READY,
+  HAND_SET_HAND,
+} from '../Actions/HandActions';
 
 const INITIAL_STATE = {
   uuid: null,

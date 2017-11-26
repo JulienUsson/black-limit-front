@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { startup } from '../../Actions/TableActions';
-
+import Question from './Question';
 import './Table.css';
 
 const propTypes = {
@@ -11,6 +11,7 @@ const propTypes = {
     uuid: PropTypes.string,
     username: PropTypes.string,
   })).isRequired,
+  question: PropTypes.string.isRequired,
   startup: PropTypes.func.isRequired,
 };
 
@@ -20,9 +21,11 @@ class Table extends Component {
   }
 
   render() {
+    const { players, question } = this.props;
     return (
       <div className="table">
-        {this.props.players.map(p => <span>{p.username} {!p.ready && 'not'} ready</span>)}
+        {players.map(p => <span key={p.username}>{p.username} {!p.ready && 'not'} ready</span>)}
+        <Question>{question}</Question>
       </div>
     );
   }
@@ -32,6 +35,7 @@ Table.propTypes = propTypes;
 
 const mapStateToProps = state => ({
   players: state.table.players,
+  question: state.table.question,
 });
 
 const mapDispatchToProps = dispatch => ({

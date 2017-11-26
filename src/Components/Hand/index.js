@@ -9,10 +9,7 @@ import './Hand.css';
 const propTypes = {
   username: PropTypes.string.isRequired,
   ready: PropTypes.bool.isRequired,
-  cards: PropTypes.arrayOf(PropTypes.shape({
-    suit: PropTypes.string,
-    value: PropTypes.string,
-  })).isRequired,
+  cards: PropTypes.arrayOf(PropTypes.string).isRequired,
   setUsername: PropTypes.func.isRequired,
   setReady: PropTypes.func.isRequired,
   startup: PropTypes.func.isRequired,
@@ -44,7 +41,7 @@ class Hand extends Component {
         <div>username: {this.props.username}</div>
         <input type="text" value={this.props.username} onChange={this.handleUsernameChange} />
         <input type="checkbox" value={this.props.ready} onChange={this.handleReadyChange} />
-        {this.props.cards.map(card => <div>{card.value} {card.suit}</div>)}
+        {this.props.cards.map(card => <div>{card}</div>)}
       </div>
     );
   }
