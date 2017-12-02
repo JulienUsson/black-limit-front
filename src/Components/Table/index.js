@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 import { connect } from 'react-redux';
 
+import { gameStartedSelector } from 'Selectors';
 import { startup } from '../../Actions/TableActions';
+import WaitingMessage from './WaitingMessage';
 import Question from './Question';
 import Player from './Player';
 
@@ -32,8 +34,13 @@ const propTypes = {
     uuid: PropTypes.string,
     username: PropTypes.string,
   })).isRequired,
-  question: PropTypes.string.isRequired,
+  question: PropTypes.string,
   startup: PropTypes.func.isRequired,
+  gameStarted: PropTypes.bool.isRequired,
+};
+
+const defaultProps = {
+  question: '',
 };
 
 class Table extends Component {
@@ -42,11 +49,11 @@ class Table extends Component {
   }
 
   render() {
-    const { players, question } = this.props;
+    const { players, question, gameStarted } = this.props;
     return (
       <RootContainer>
         <QuestionContainer>
-          <Question>{question}</Question>
+          {gameStarted ? <Question>{question}</Question> : <WaitingMessage />}
         </QuestionContainer>
         <Players>
           {players.map(p => <Player key={p.username} {...p} />)}
@@ -58,9 +65,12 @@ class Table extends Component {
 
 Table.propTypes = propTypes;
 
+Table.defaultProps = defaultProps;
+
 const mapStateToProps = state => ({
   players: state.table.players,
   question: state.table.question,
+  gameStarted: gameStartedSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
