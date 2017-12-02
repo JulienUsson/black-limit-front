@@ -3,6 +3,7 @@ import {
   HAND_SET_UUID,
   HAND_SET_READY,
   HAND_SET_HAND,
+  HAND_RESET,
 } from '../Actions/HandActions';
 
 const INITIAL_STATE = {
@@ -22,6 +23,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, ready: action.ready };
     case HAND_SET_HAND:
       return { ...state, hand: action.hand };
+    case HAND_RESET:
+      return { ...state, ready: false, hand: [] };
     default:
       return state;
   }

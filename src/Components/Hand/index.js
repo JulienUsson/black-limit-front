@@ -36,12 +36,13 @@ class Hand extends Component {
   }
 
   render() {
+    const { username, ready, cards } = this.props;
     return (
       <div className="hand">
-        <div>username: {this.props.username}</div>
-        <input type="text" value={this.props.username} onChange={this.handleUsernameChange} />
-        <input type="checkbox" value={this.props.ready} onChange={this.handleReadyChange} />
-        {this.props.cards.map(card => <div>{card}</div>)}
+        <div>username: {username}</div>
+        <input type="text" value={username} onChange={this.handleUsernameChange} />
+        <input type="checkbox" checked={ready} onChange={this.handleReadyChange} />
+        {cards.map(card => <div key={card}>{card}</div>)}
       </div>
     );
   }
