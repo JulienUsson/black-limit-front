@@ -1,7 +1,8 @@
 {
-  "name": "rpi-poker-table-front",
-  "version": "0.1.0",
-  "private": true,
+  "name": "black-limit",
+  "version": "0.0.1",
+  "author": "Julien Usson",
+  "license": "GPL-3.0+",
   "dependencies": {
     "glamor": "^2.20.40",
     "glamorous": "^4.11.0",
