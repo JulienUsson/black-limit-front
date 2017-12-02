@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
 import { connect } from 'react-redux';
 
 import { startup } from '../../Actions/TableActions';
 import Question from './Question';
-import './Table.css';
+import Player from './Player';
+
+const RootContainer = glamorous.div({
+  backgroundColor: '#000000',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  height: '100%',
+});
+
+const QuestionContainer = glamorous.div({
+  display: 'flex',
+  flex: 1,
+});
+
+const Players = glamorous.div({
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%',
+  justifyContent: 'space-around',
+});
 
 const propTypes = {
   players: PropTypes.arrayOf(PropTypes.shape({
@@ -23,10 +44,14 @@ class Table extends Component {
   render() {
     const { players, question } = this.props;
     return (
-      <div className="table">
-        {players.map(p => <span key={p.username}>{p.username} {!p.ready && 'not'} ready</span>)}
-        <Question>{question}</Question>
-      </div>
+      <RootContainer>
+        <QuestionContainer>
+          <Question>{question}</Question>
+        </QuestionContainer>
+        <Players>
+          {players.map(p => <Player key={p.username} {...p} />)}
+        </Players>
+      </RootContainer>
     );
   }
 }
