@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import toString from 'lodash/toString';
 
 const propTypes = {
   children: PropTypes.string.isRequired,
@@ -7,7 +8,7 @@ const propTypes = {
 
 const Question = ({ children }) => (
   <div>
-    {String(children).replace(/\{[0-9]?\}/g, '________')}
+    {toString(children).replace(/\{[0-9]?\}/g, '________')}
   </div>
 );
 
