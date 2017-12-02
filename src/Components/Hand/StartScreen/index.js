@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { setUsername, setReady } from 'Actions/HandActions';
+import TextInput from './TextInput';
 
 const propTypes = {
   username: PropTypes.string.isRequired,
@@ -25,7 +26,7 @@ class Hand extends Component {
     return (
       <div>
         <div>username: {username}</div>
-        <input type="text" value={username} onChange={this.handleUsernameChange} />
+        <TextInput value={username} onChange={this.handleUsernameChange} />
         <input type="checkbox" checked={ready} onChange={this.handleReadyChange} />
       </div>
     );
