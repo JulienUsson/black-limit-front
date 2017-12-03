@@ -3,15 +3,25 @@ import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
 const Container = glamorous.div({
-  cursor: 'pointer',
+  position: 'absolute',
+  bottom: 5,
   background: '#fff',
+  color: '#000',
+  borderRadius: 8,
   borderStyle: 'solid',
   borderColor: '#000',
   borderWidth: 1,
-  color: '#000',
-  position: 'absolute',
-  borderRadius: 15,
-  padding: 15,
+  fontSize: '2vw',
+  fontWeight: 600,
+  width: '16vw',
+  height: '24vw',
+  padding: 12,
+  cursor: 'pointer',
+  wordWrap: 'break-word',
+  transition: 'transform 350ms ease',
+  '&:hover': {
+    transform: 'translateY(-5vw)',
+  },
 });
 
 const propTypes = {

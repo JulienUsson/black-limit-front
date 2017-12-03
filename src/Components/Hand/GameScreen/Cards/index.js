@@ -36,9 +36,6 @@ class Cards extends Component {
     const nbCards = this.props.cards.length;
     return ({
       left: (offsetWidth / nbCards) * i,
-      bottom: 0,
-      width: '15vw',
-      height: '25vw',
     });
   }
 
