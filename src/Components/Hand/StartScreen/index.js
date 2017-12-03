@@ -8,6 +8,15 @@ import { FormControlLabel } from 'material-ui/Form';
 
 import { setUsername, setReady } from 'Actions/HandActions';
 
+const Container = glamorous.div({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  height: '50%',
+  width: '100%',
+});
+
 const Title = glamorous.h2({
   textAlign: 'center',
   fontWeight: 700,
@@ -39,15 +48,17 @@ class Hand extends Component {
   render() {
     const { username, ready } = this.props;
     return (
-      <Div display="flex" flexDirection="column" alignItems="center" justifyContent="space-around" height="100%">
-        <Title>Black Limit</Title>
-        <Div width={350} display="flex" justifyContent="space-between">
-          <TextField value={username} onChange={this.handleUsernameChange} placeholder="Nom" required />
-          <FormControlLabel
-            control={<CheckBox checked={ready} onChange={this.handleReadyChange} />}
-            label="Prêt?"
-          />
-        </Div>
+      <Div display="flex" height="100%" justifyContent="center" alignItems="center">
+        <Container>
+          <Title>Black Limit</Title>
+          <Div width={350} display="flex" justifyContent="space-between">
+            <TextField value={username} onChange={this.handleUsernameChange} placeholder="Nom" required />
+            <FormControlLabel
+              control={<CheckBox checked={ready} onChange={this.handleReadyChange} />}
+              label="Prêt?"
+            />
+          </Div>
+        </Container>
       </Div>
     );
   }
