@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import glamorous, { Div } from 'glamorous';
+import TextField from 'material-ui/TextField';
+import CheckBox from 'material-ui/Checkbox';
+import { FormControlLabel } from 'material-ui/Form';
 
 import { setUsername, setReady } from 'Actions/HandActions';
-import TextInput from './TextInput';
+
+const Title = glamorous.h2({
+  textAlign: 'center',
+  fontWeight: 700,
+  fontSize: 48,
+  margin: 0,
+});
 
 const propTypes = {
   username: PropTypes.string.isRequired,
@@ -15,20 +25,30 @@ const propTypes = {
 class Hand extends Component {
   handleUsernameChange = (event) => {
     this.props.setUsername(event.target.value);
+    if (event.target.value.length === 0) {
+      this.props.setReady(false);
+    }
   }
 
   handleReadyChange = (event) => {
-    this.props.setReady(event.target.checked);
+    if (this.props.username.length > 0) {
+      this.props.setReady(event.target.checked);
+    }
   }
 
   render() {
     const { username, ready } = this.props;
     return (
-      <div>
-        <div>username: {username}</div>
-        <TextInput value={username} onChange={this.handleUsernameChange} />
-        <input type="checkbox" checked={ready} onChange={this.handleReadyChange} />
-      </div>
+      <Div display="flex" flexDirection="column" alignItems="center" justifyContent="space-around" height="100%">
+        <Title>Black Limit</Title>
+        <Div width={350} display="flex" justifyContent="space-between">
+          <TextField value={username} onChange={this.handleUsernameChange} placeholder="Nom" required />
+          <FormControlLabel
+            control={<CheckBox checked={ready} onChange={this.handleReadyChange} />}
+            label="Prêt?"
+          />
+        </Div>
+      </Div>
     );
   }
 }

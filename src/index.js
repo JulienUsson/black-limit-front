@@ -4,7 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { MuiThemeProvider } from 'material-ui/styles';
 
+import theme from 'Theme';
 import reducers from './Reducers';
 import webSocketMiddleware from './Middleware/WebSocketMiddleware';
 import Table from './Components/Table';
@@ -19,12 +21,14 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route path="/table" component={Table} />
-        <Route path="/hand" component={Hand} />
-      </Switch>
-    </Router>
+    <MuiThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route path="/table" component={Table} />
+          <Route path="/hand" component={Hand} />
+        </Switch>
+      </Router>
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root'),
 );
