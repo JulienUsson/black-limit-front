@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
+import React from 'react'
+import PropTypes from 'prop-types'
+import glamorous from 'glamorous'
 
 const Container = glamorous.div(
   {
@@ -23,25 +23,23 @@ const Container = glamorous.div(
   },
   ({ selected }) => ({
     transform: selected && 'translateY(-5vw)',
-  }),
-);
+  })
+)
 
 const propTypes = {
   children: PropTypes.string.isRequired,
   onSelect: PropTypes.func,
   onDeselect: PropTypes.func,
   selected: PropTypes.bool,
-};
+}
 
 const defaultProps = {
   onSelect: () => {},
   onDeselect: () => {},
   selected: false,
-};
+}
 
-const Card = ({
-  children, selected, onSelect, onDeselect, ...style
-}) => (
+const Card = ({ children, selected, onSelect, onDeselect, ...style }) => (
   <Container
     selected={selected}
     onClick={() => (selected ? onDeselect(children) : onSelect(children))}
@@ -49,9 +47,9 @@ const Card = ({
   >
     {children}
   </Container>
-);
+)
 
-Card.propTypes = propTypes;
-Card.defaultProps = defaultProps;
+Card.propTypes = propTypes
+Card.defaultProps = defaultProps
 
-export default Card;
+export default Card

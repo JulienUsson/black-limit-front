@@ -1,4 +1,4 @@
-import { createMuiTheme } from 'material-ui/styles';
+import { createMuiTheme } from 'material-ui/styles'
 
 export default createMuiTheme({
   palette: {
@@ -24,4 +24,4 @@ export default createMuiTheme({
   typography: {
     fontFamily: 'Montserrat, sans-serif',
   },
-});
+})

@@ -4,28 +4,28 @@ import {
   HAND_SET_READY,
   HAND_SET_HAND,
   HAND_RESET,
-} from '../Actions/HandActions';
+} from '../Actions/HandActions'
 
 const INITIAL_STATE = {
   uuid: null,
   username: '',
   ready: false,
   hand: [],
-};
+}
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case HAND_SET_UUID:
-      return { ...state, uuid: action.uuid };
+      return { ...state, uuid: action.uuid }
     case HAND_SET_USERNAME:
-      return { ...state, username: action.username };
+      return { ...state, username: action.username }
     case HAND_SET_READY:
-      return { ...state, ready: action.ready };
+      return { ...state, ready: action.ready }
     case HAND_SET_HAND:
-      return { ...state, hand: action.hand };
+      return { ...state, hand: action.hand }
     case HAND_RESET:
-      return { ...state, ready: false, hand: [] };
+      return { ...state, ready: false, hand: [] }
     default:
-      return state;
+      return state
   }
-};
+}

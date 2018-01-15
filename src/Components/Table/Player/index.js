@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
+import React from 'react'
+import PropTypes from 'prop-types'
+import glamorous from 'glamorous'
 
-import ReadyIndicator from './ReadyIndicator';
+import ReadyIndicator from './ReadyIndicator'
 
 const Container = glamorous.div({
   display: 'flex',
@@ -11,19 +11,19 @@ const Container = glamorous.div({
   alignItems: 'center',
   color: '#ffffff',
   fontSize: 22,
-});
+})
 
 const propTypes = {
   username: PropTypes.string.isRequired,
   ready: PropTypes.bool.isRequired,
-};
+}
 
 const Question = ({ username, ready }) => (
   <Container>
     {username} <ReadyIndicator isReady={ready} />
   </Container>
-);
+)
 
-Question.propTypes = propTypes;
+Question.propTypes = propTypes
 
-export default Question;
+export default Question
