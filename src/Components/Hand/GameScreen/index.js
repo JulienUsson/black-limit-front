@@ -5,12 +5,7 @@ import glamorous from 'glamorous'
 import Cards from './Cards'
 
 const Container = glamorous.div({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'space-between',
   height: '100%',
-  overflow: 'hidden',
 })
 
 const Title = glamorous.h2({

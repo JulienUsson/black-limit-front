@@ -1,8 +1,6 @@
 import openSocket from 'socket.io-client'
 
-import config from '../config'
-
-const socket = openSocket(config.socket)
+const socket = openSocket(process.env.REACT_APP_SOCKET_URL)
 
 const WebSocketMiddleware = () => next => {
   socket.on('dispatch', action => next(action))
