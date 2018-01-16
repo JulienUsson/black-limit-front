@@ -21,7 +21,6 @@ const propTypes = {
 
 const Hand = ({ username }) => (
   <Container>
-    <Title>{username}</Title>
     <Cards />
   </Container>
 )
