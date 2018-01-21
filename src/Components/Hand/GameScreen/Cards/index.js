@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { blankCountSelector } from 'Selectors'
+import { Button } from 'material-ui'
 import Card from './Card'
+import { play } from 'Actions/HandActions'
 
 const propTypes = {
   cards: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -28,7 +30,7 @@ class Cards extends Component {
   }
 
   render() {
-    const { cards } = this.props
+    const { cards, play } = this.props
     const { selected } = this.state
 
     return (
@@ -42,6 +44,7 @@ class Cards extends Component {
             {card}
           </Card>
         ))}
+        <Button onClick={play(selected)}>Valider</Button>
       </Fragment>
     )
   }
@@ -54,4 +57,8 @@ const mapStateToProps = state => ({
   blankCount: blankCountSelector(state),
 })
 
-export default connect(mapStateToProps)(Cards)
+const mapDispatchToProps = dispatch => ({
+  play: cards => () => dispatch(play(cards)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cards)

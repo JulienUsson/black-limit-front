@@ -16,11 +16,12 @@ const Container = glamorous.div({
 const propTypes = {
   username: PropTypes.string.isRequired,
   ready: PropTypes.bool.isRequired,
+  hasPlay: PropTypes.bool.isRequired,
 }
 
-const Question = ({ username, ready }) => (
+const Question = ({ username, ready, hasPlay }) => (
   <Container>
-    {username} <ReadyIndicator isReady={ready} />
+    <ReadyIndicator isReady={ready} /> {username} {hasPlay && '✔'}
   </Container>
 )
 

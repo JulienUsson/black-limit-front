@@ -7,7 +7,7 @@ const Indicator = glamorous.div(({ ready }) => ({
   borderRadius: '50%',
   height: 12,
   width: 12,
-  marginLeft: 8,
+  marginRight: 8,
 }))
 
 const propTypes = {

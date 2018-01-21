@@ -7,6 +7,7 @@ import { gameStartedSelector } from 'Selectors'
 import { startup } from '../../Actions/TableActions'
 import WaitingMessage from './WaitingMessage'
 import Question from './Question'
+import Answers from './Answers'
 import Player from './Player'
 
 const RootContainer = glamorous.div({
@@ -17,7 +18,7 @@ const RootContainer = glamorous.div({
   height: '100%',
 })
 
-const QuestionContainer = glamorous.div({
+const Container = glamorous.div({
   display: 'flex',
   flex: 1,
 })
@@ -37,6 +38,7 @@ const propTypes = {
     })
   ).isRequired,
   question: PropTypes.string,
+  answers: PropTypes.array,
   startup: PropTypes.func.isRequired,
   gameStarted: PropTypes.bool.isRequired,
 }
@@ -50,13 +52,23 @@ class Table extends Component {
     this.props.startup()
   }
 
+  renderBody({ question, gameStarted, answers }) {
+    if (gameStarted) {
+      if (answers) {
+        return <Answers question={question} answers={answers} />
+      } else {
+        return <Question>{question}</Question>
+      }
+    } else {
+      return <WaitingMessage />
+    }
+  }
+
   render() {
-    const { players, question, gameStarted } = this.props
+    const { players } = this.props
     return (
       <RootContainer>
-        <QuestionContainer>
-          {gameStarted ? <Question>{question}</Question> : <WaitingMessage />}
-        </QuestionContainer>
+        <Container>{this.renderBody(this.props)}</Container>
         <Players>
           {players.map(p => <Player key={p.username} {...p} />)}
         </Players>
@@ -72,6 +84,7 @@ Table.defaultProps = defaultProps
 const mapStateToProps = state => ({
   players: state.table.players,
   question: state.table.question,
+  answers: state.table.answers,
   gameStarted: gameStartedSelector(state),
 })
 

@@ -10,14 +10,6 @@ const configureStore = () => {
     composeWithDevTools(applyMiddleware(webSocketMiddleware))
   )
 
-  if (process.env.NODE_ENV !== 'production') {
-    if (module.hot) {
-      module.hot.accept('./Reducers', () => {
-        store.replaceReducer(reducers)
-      })
-    }
-  }
-
   return store
 }
 
