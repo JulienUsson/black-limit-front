@@ -9,8 +9,7 @@ const Div = glamorous.div({
   justifyContent: 'space-around',
   alignItems: 'center',
   color: '#ffffff',
-  fontWeight: 700,
-  fontSize: 36,
+  fontSize: 24,
 })
 
 const propTypes = {
